@@ -1,0 +1,48 @@
+Minimization input file for TI
+ &cntrl
+
+! simulation
+imin = 1,                 ! flag to run minization (0=false)
+irest = 0,                ! flag to restart simulation
+ntx = 1,                  ! option to read from inpcrd file
+ntxo = 1,                 ! read/write rst as formatted file
+dt = 0.001,               ! timestep (1fs)
+maxcyc = 10000
+ntmin = 2
+
+! thermostate
+ntt = 3,                  ! switch for time scaling (3=Langevin)
+temp0 = 300,              ! reference temperature (if ntt>0)
+gamma_ln = 5.0,           ! collision frequency for ntt=3
+ig = -1,                  ! seed for Random Number Generator (RNG) (use -1 with   ntt=2,3)
+
+! output
+ioutfm = 1,               ! film fromat (1=binary NetCDF)
+iwrap = 0,                ! wrap coordination into primary box (1=do)
+ntwx = 1000,              ! write to .mdcrd every n steps
+ntpr = 100,               ! write energies to .mdout/.mdinfo every n steps
+ntwr = 1000,              ! write rstrt file every n steps
+
+! alchemical free energy
+cut = 9.0
+ntc = 2,                  ! SHAKE bond length constraints (2=H-atom)
+ntf = 1,                  ! force evaluation (1=evalute all)
+noshakemask = ':L11,25a',     ! remove SHAKE from perturbed regions
+
+icfe = 1,                 ! turn on free energy calculation
+ifsc = 1,                 ! use softcore parameters (0=undo)
+clambda = 0.4374,            ! current lambda
+timask1 = ':L11',           ! specify atoms unique to V_0
+timask2 = ':25a',           ! specify atoms unique to V_1
+ 
+ 
+scmask1 = ':L11@H8', 
+                      ! specify the unique atoms for V0
+scmask2 = ':25a@C10, H11, H12, H13', 
+                      ! specify the unique atoms for V1
+ 
+!vlimit = 10
+ /
+ &ewald
+ /
+
