@@ -1,0 +1,40 @@
+# 12/25/21 11:45:42
+# Args:  merged.parm7
+# Loaded topologies:
+#   merged.parm7
+parmbox x 120.1124230 y 120.1124230 z 108.0637010 alpha 90.0 beta 90.0 gamma 90.00
+parmwrite out box.parm7
+go
+quit
+# 12/25/21 11:45:54
+# Args:  merged.parm7
+# Loaded topologies:
+#   merged.parm7
+quit
+# 12/25/21 11:46:00
+# Args:  box.parm7
+# Loaded topologies:
+#   box.parm7
+trajin merged.rst7
+box x 120.1124230 y 120.1124230 z 108.0637010 alpha 90.0 beta 90.0 gamma 90.00
+trajout box.rst7
+go
+qquit
+quit
+# 12/25/21 15:52:54
+# Args:  merged.parm7
+# Loaded topologies:
+#   merged.parm7
+parmbox x 120.1124230 y 120.1124230 z 108.0637010 alpha 90.0 beta 90.0 gamma 90.00
+parmwrite out box.parm7
+go
+quit
+# 12/25/21 15:53:08
+# Args:  box.parm7
+# Loaded topologies:
+#   box.parm7
+trajin merged.rst7
+box x 120.1124230 y 120.1124230 z 108.0637010 alpha 90.0 beta 90.0 gamma 90.00
+trajout box.rst7
+go
+quit
