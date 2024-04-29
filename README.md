@@ -1,6 +1,6 @@
 Amber-TI contains files for relative binding free energy simulations:
 
-1. According to the difference between ligands (L0 and L1), change the scmask1 and scmask2 (in the .tmpl files) to be consistent with the system.
+1. According to the difference between ligands (LA and LB), change the scmask1 and scmask2 (in the .tmpl files) to be consistent with the system.
 2. Run 1_setup.sh to generate 12 lambda windows.
 3. Submit the L11-25a.sh script to perform AMBER-TI.
 4. To extend the simulations, change the jidx to a different number in the submit.sh file. The number of MD steps (nstlim in ti.in.tmpl file) might also need to be adjusted to reach the desired simulation length.
