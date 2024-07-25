@@ -1,0 +1,58 @@
+TI simulation
+ &cntrl
+   
+! simulation
+imin = 0,                 ! flag to run minization (0=false) 
+nstlim = 1250000,         ! number of MD steps
+irest = 1,                ! flag to restart simulation
+ntx = 5,                  ! option to read from inpcrd file
+ntxo = 1,                 ! read/write rst as formatted file
+dt = 0.004,               ! timestep (4fs;hmr)
+ntb = 2,              ! specify PBC type
+
+! thermostate
+ntt = 3,                  ! switch for time scaling (3=Langevin)
+temp0 = 300,            ! reference temperature (if ntt>0) 
+gamma_ln = 5.0,           ! collision frequency for ntt=3
+ig = -1,                  ! seed for Random Number Generator (RNG) (use -1 with ntt=2,3)
+! barostate
+ntp = 1,                  ! constant pressure dynamics (1=do scaling) 
+barostat = 2,             ! barostat to use (2=Monte Carlo)
+mcbarint = 100,           ! volume change attempt every n steps
+pres0 = 1.01325,          ! referenve pressure (in bars)
+taup = 2.0,               ! pressure relation time (in ps)
+
+! output
+ioutfm = 1,               ! film fromat (1=binary NetCDF)
+iwrap = 0,                ! wrap coordination into primary box (1=do)
+ntwe = 10000,             ! write to .mden every n steps 
+ntwx = 10000,             ! write to .mdcrd every n steps
+ntpr = 1000,              ! write energies to .mdout/.mdinfo every n steps
+ntwr = 10000,             ! write rstrt file every n steps
+
+! alchemical free energy
+cut = 9.0
+ntc = 2,                  ! SHAKE bond length constraints (2=H-atom)
+ntf = 1,                  ! force evaluation (1=evalute all)
+
+icfe = 1,                 ! turn on free energy calculation 
+ifsc = 1,                 ! use softcore parameters (0=undo)
+gti_add_sc = 2,           ! (3=1-4 vdW & vdW interactions will be scaled with lambda in the softcore region internally)
+clambda = %L1%,           ! current lambda
+ifmbar = 1,               ! generate additional output (1=do)
+bar_intervall = 1,
+mbar_states = %L2%,       ! number of lamda windows considered
+mbar_lambda = %L3%,       ! lambda windows simulat1ttimask1 = ':1t',           ! specify atoms unique to V_0
+timask1 = ':1d',           ! specify atoms unique to V_0
+timask2 = ':1t',           ! specify atoms unique to V_1
+ 
+ 
+scmask1 = ':1d@H1, H2, H21, H16, H27, H32', 
+                      ! specify the unique atoms for V0
+scmask2 = ':1t@C1, H1, H2, H3, C3, H4, H5, H6, C12, H16, H17, C13, H18, H19, C14, H20, H21, C18, H27, H28, C19, H29, H30, C20, H31, H32 ', 
+                      ! specify the unique atoms for V1
+vlimit = 20
+ /
+ &ewald
+ / 
+
